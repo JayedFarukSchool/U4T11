@@ -1,23 +1,90 @@
 import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
-        // TEST CODE for edgeSum
-        int[][] numbers = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
-        int s1 = FunWith2DArrays.edgeSum(numbers);
-        System.out.println(s1);
-        int[][] numbers2 = {{1, 2, 3}, {5, 6, 7}, {9, 10, 11}, {13, 14, 15}, {18, 19, 20}};
-        int s2 = FunWith2DArrays.edgeSum(numbers2);
-        System.out.println(s2);
-        int[][] numbers3 = {{1, 2, 3, 4}, {5, 6, 7, 8}};
-        int s3 = FunWith2DArrays.edgeSum(numbers3);
-        System.out.println(s3);
-        int[][] numbers4 = {{1, 2}, {5, 6}};
-        int s4 = FunWith2DArrays.edgeSum(numbers4);
-        System.out.println(s4);
-        if (s1 == 102 && s2 == 123 && s3 == 36 && s4 == 14) {
-            System.out.println("TEST PASSES");
+        // TEST CODE FOR indexFound
+        System.out.println("----TEST 1-----");
+        String[][] letters = {{"a", "b", "c"}, {"c", "d", "e"}};
+        boolean test1 = true;
+        int[] idx = FunWith2DArrays.indexFound(letters, "c");
+        if (!(idx.length == 2 && idx[0] == 1 && idx[1] == 0)) {
+            test1 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(letters, "a");
+        if (!(idx.length == 2 && idx[0] == 0 && idx[1] == 0)) {
+            test1 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(letters, "e");
+        if (!(idx.length == 2 && idx[0] == 1 && idx[1] == 2)) {
+            test1 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(letters, "g");
+        if (!(idx.length == 2 && idx[0] == -1 && idx[1] == -1)) {
+            test1 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        if (test1) {
+            System.out.println("TEST 1 PASSES");
         } else {
-            System.out.println("!!!!!!! TEST FAILS !!!!!!!");
+            System.out.println("!!!!!!! TEST 1 FAILS !!!!!!!");
+        }
+        System.out.println("\n----TEST 2-----");
+        String[][] words = {{"hi", "time", "stuff", "hi"}, {"bye", "hi", "time", "up"}, {"time", "low", "time", "hi"}};
+        boolean test2 = true;
+        idx = FunWith2DArrays.indexFound(words, "time");
+        if (!(idx.length == 2 && idx[0] == 2 && idx[1] == 0)) {
+            test2 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(words, "hi");
+        if (!(idx.length == 2 && idx[0] == 0 && idx[1] == 0)) {
+            test2 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(words, "up");
+        if (!(idx.length == 2 && idx[0] == 1 && idx[1] == 3)) {
+            test2 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(words, "cat");
+        if (!(idx.length == 2 && idx[0] == -1 && idx[1] == -1)) {
+            test2 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        if (test2) {
+            System.out.println("TEST 2 PASSES");
+        } else {
+            System.out.println("!!!!!!! TEST 2 FAILS !!!!!!!");
+        }
+        System.out.println("\n----TEST 3-----");
+        String[][] words2 = {{"time", "up", "bye"}};
+        boolean test3 = true;
+        idx = FunWith2DArrays.indexFound(words2, "time");
+        if (!(idx.length == 2 && idx[0] == 0 && idx[1] == 0)) {
+            test3 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(words2, "up");
+        if (!(idx.length == 2 && idx[0] == 0 && idx[1] == 1)) {
+            test3 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(words2, "bye");
+        if (!(idx.length == 2 && idx[0] == 0 && idx[1] == 2)) {
+            test3 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        idx = FunWith2DArrays.indexFound(words2, "cat");
+        if (!(idx.length == 2 && idx[0] == -1 && idx[1] == -1)) {
+            test3 = false;
+        }
+        System.out.println(Arrays.toString(idx));
+        if (test3) {
+            System.out.println("TEST 3 PASSES");
+        } else {
+            System.out.println("!!!!!!! TEST 3 FAILS !!!!!!!");
         }
 
     }

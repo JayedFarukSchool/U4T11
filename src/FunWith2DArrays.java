@@ -28,18 +28,31 @@ public class FunWith2DArrays {
 
     public static int edgeSum(int[][] arr1) {
         int sum = 0;
-        for (int i = 0; i < arr1.length; i++) {
-            if (i == 0 || i == arr1.length - 1) {
-                for (int c = 0; c < arr1[i].length; c++) {
-                    sum += c;
-                }
-            }
-            else{
-                sum += arr1[i][0];
-                sum += arr1[i][arr1.length-1];
-            }
-
+        for (int num : arr1[0]) {
+            sum += num;
+        }
+        for (int num : arr1[arr1.length - 1]) {
+            sum += num;
+        }
+        for (int i = 1; i < arr1.length - 1; i++) {
+            sum += arr1[i][0];
+            sum += arr1[i][arr1[i].length - 1];
         }
         return sum;
+    }
+
+    public static int[] indexFound(String[][] arr1, String word){
+        int row = -1;
+        int col = -1;
+        for (int r = 0; r<arr1.length; r++){
+            for (int c = 0; c<arr1[r].length; c++){
+                if (arr1[r][c].contains(word)) row = r; col = r;
+            }
+        }
+        int[] match = new int[2];
+        match[0] = row;
+        match[1] = col;
+
+        return match;
     }
 }
