@@ -2,18 +2,15 @@ public class FunWith2DArrays {
     public static int totalElements(int[][] arr1) {
         return (arr1.length * arr1[0].length);
     }
-
     public static void fourCorners(String[][] arr1) {
         System.out.println(arr1[0][0] + "\n" + arr1[0][arr1[0].length - 1] + "\n" + arr1[arr1.length - 1][0]
                 + "\n" + arr1[arr1.length - 1][arr1[0].length - 1]);
     }
-
     public static void swapFrontAndBackRows(String[][] arr1) {
         String[] temp = arr1[0];
         arr1[0] = arr1[arr1.length - 1];
         arr1[arr1.length - 1] = temp;
     }
-
     public static double average(int[][] arr1) {
         int average = 0;
         int count = 0;
@@ -25,7 +22,6 @@ public class FunWith2DArrays {
         }
         return ((double) average / count);
     }
-
     public static int edgeSum(int[][] arr1) {
         int sum = 0;
         for (int num : arr1[0]) {
@@ -40,19 +36,58 @@ public class FunWith2DArrays {
         }
         return sum;
     }
-
-    public static int[] indexFound(String[][] arr1, String word){
+    public static int[] indexFound(String[][] arr1, String word) {
         int row = -1;
         int col = -1;
-        for (int r = 0; r<arr1.length; r++){
-            for (int c = 0; c<arr1[r].length; c++){
-                if (arr1[r][c].contains(word)) row = r; col = r;
+        boolean found = false;
+        for (int c = 0; c < arr1[0].length; c++) {
+            for (int r = 0; r < arr1.length; r++) {
+                if (arr1[r][c].equals(word)) {
+                    row = r;
+                    col = c;
+                    found = true;
+                    break;
+                }
+            }
+            if (found) break;
+        }
+        return new int[]{row, col};
+    }
+    public static int[][] split (int[][] arr, int row, int col){
+        if (row >= arr.length || col >= arr[0].length){
+            return new int[0][0];
+        }
+        int[][] broken = new int[row+1][col+1];
+        for (int r = 0; r <= row; r++){
+            for (int c = 0; c <= col; c++){
+                broken[r][c] = arr[r][c];
+                System.out.println(broken[r][c]);
             }
         }
-        int[] match = new int[2];
-        match[0] = row;
-        match[1] = col;
-
-        return match;
+        return broken;
     }
+    public static int[][] invert (int[][] arr){
+        int[][] inverted = new int[arr[0].length][arr.length];
+        for (int c = 0; c < arr[0].length; c++){
+            for (int r = 0; r < arr.length; r++){
+                inverted[c][r] = arr[r][c];
+            }
+        }
+        return inverted;
+    }
+    public static int sumForRow(int[][] arr, int row){
+        int sum = 0;
+        for (int num: arr[row]){
+            sum += num;
+        }
+        return sum;
+    }
+    public static int sumForColumn(int[][] arr, int col){
+        int sum = 0;
+        for (int r = 0; r< arr.length; r++){
+            sum += arr[r][col];
+        }
+        return sum;
+    }
+
 }
